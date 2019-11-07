@@ -18,11 +18,13 @@ set $term termite
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $background ~/.config/sway/backgrounds/Catalina_Light_Mode.jpg
 
 ### Output configuration
 #
+
 # Default wallpaper
-output * bg ~/.config/sway/backgrounds/Catalina_Light_Mode.jpg fill
+output * bg $background fill
 #output * bg ~/.config/sway/backgrounds/Catalina_Dark_Mode.jpg fill
 #
 # Example configuration:
@@ -35,11 +37,11 @@ output * bg ~/.config/sway/backgrounds/Catalina_Light_Mode.jpg fill
 #
 # Example configuration:
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' \
-#               resume 'swaymsg "output * dpms on"' \
-#          before-sleep 'swaylock -f -c 000000'
+exec swayidle -w \
+         timeout 300 'swaylock -f -e -F -c 000000 -i $background' \
+         timeout 600 'swaymsg "output * dpms off"' \
+              resume 'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock -f -e -F -c 000000 -i $background'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when

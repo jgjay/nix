@@ -3,7 +3,9 @@
   home.packages = with pkgs; [
     #swayidle
     #swaylock
+    mako
     powerline-fonts
+    slack
     waybar
     wl-clipboard
   ];
@@ -82,6 +84,9 @@
   programs.vscode = {
     enable = true;
     extensions = [];
+    userSettings = {
+      "window.menuBarVisibility" = "toggle";
+    };
   };
 
   programs.zsh = {
